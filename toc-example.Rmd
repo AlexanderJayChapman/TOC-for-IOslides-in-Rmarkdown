@@ -3,7 +3,12 @@ title: "ToC in IOslides"
 subtitle: "Generate Table of Content"
 author: "Klinkenberg"
 date: "3 August 2016"
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    css: toc-style.css
+    includes:
+      in_header: TOC_generator.js.wrapper
+    self_contained: true
 ---
 
 ```{r setup, include=FALSE}
@@ -12,35 +17,63 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Table of content
 
-<!-- Link to table of content javascript -->
-<script src="TOC_generator.js"></script>
+<!-- Link to table of content javascript 
+<script language="JavaScript" src="TOC_generator.js"></script>-->
 
-<!-- Link to table of content style -->
-<link rel="stylesheet" type="text/css" href="toc-style.css">
+<!-- Link to table of content style 
+<link rel="stylesheet" type="text/css" href="toc-style.css">-->
 
 <!-- add div element table of content for javascript to fill -->
 <div id="toc"></div>
 
-# HTML {.section}
+# Add TOC {.section}
 
-## Add TOC HTML {.subsection}
+## Add TOC
 
-To add the table of content to the slides first create a new slide in Rmarkdown.
+To add the table of content to the slides, first create a new slide in Rmarkdown.
 
 ``` ## Table of content ```
 
 Next add the following HTML to this page.
 
 ```{"HTML"}
-<!-- Link to table of content javascript -->
-<script src="TOC_generator.js"></script>
-
-<!-- Link to table of content style -->
-<link rel="stylesheet" type="text/css" href="toc-style.css">
-
 <!-- add div element table of content for javascript to fill -->
 <div id="toc"></div>
 ```
+
+# Dependencies {.section}
+
+## HTML {.subsection}
+
+In order to get the javascript to work, the dependencies must be added to the markdown document. This can be done with two methods. The first being HTML links to the ```javascript``` and ```css``` files like:
+
+```{"HTML"}
+<!-- Link to table of content javascript -->
+<script language="JavaScript" src="TOC_generator.js"></script>
+
+<!-- Link to table of content style -->
+<link rel="stylesheet" type="text/css" href="toc-style.css">
+```
+
+The problem with this method is that the parsed HTML file stays dependent on the external files and is therefore not self contained.
+
+## YAML {.subsection}
+
+An ugly workaround for this problem is to specify the dependencies in the YAML header of the Rmarkdown file:
+
+```{"YAML"}
+---
+output:
+  ioslides_presentation:
+    css: toc-style.css
+    includes:
+      in_header: TOC_generator.js.wrapper
+    self_contained: true
+---
+```
+
+In order to include a ```.js``` file it needs to be wrapped in ```HTML <script>```
+elements. I therefore created the ```TOC_generator.js.wrapper``` file, but this is very ugly.
 
 # Javascript {.section}
 
@@ -66,9 +99,9 @@ li.subsection {font-size: .95em;
 
 This file also needs to be added to the working directory.
 
-# Rmarkdown {.section}
+# Add sections {.section}
 
-## Add sections {.subsection}
+## Add sections
 
 To add a section that you want displayed in the table of content all you have te do is add a ``` .section ``` or ``` .subsection ``` class to the header of the slide.
 
