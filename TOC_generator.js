@@ -28,9 +28,8 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         // Add text to list element
         item.appendChild(document.createTextNode(titleText));
         
-        // Add subsection classes
-        if(idfromclass[i].className == "section")    { item.className = "section";    } 
-        if(idfromclass[i].className == "subsection") { item.className = "subsection"; }
+        // Add subsection class
+        item.className = idfromclass[i].className
         
         // Add it to the list:
         list.appendChild(item);
