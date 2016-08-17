@@ -46,7 +46,7 @@ Next add the following HTML to this page.
 
 ## Javascript
 
-Now that the link to javascript file has been added to the Rmarkdown slide we need to also add the file itself, by adding it to the working directory of your ``` .rmd ``` file.
+Now that the link to the javascript file has been added to the Rmarkdown slide we need to also add the file itself, by adding it to the working directory of your ``` .rmd ``` file.
 
 You can download ``` TOC_generator.js ``` from the [TOC-for-IOslides-in-Rmarkdown](https://github.com/ShKlinkenberg/TOC-for-IOslides-in-Rmarkdown) GitHub page.
 
@@ -101,7 +101,7 @@ document.querySelectorAll('.section, .subsection')
 Only two levels are available to use in the table of content. This seems to be caused by the Rmarkdown header 3 not allowing to define a class.
 
 ```{"markdown"}
-### Your heading one name {.subsubsection}
+### Your heading three name {.subsubsection}
 ```
 
 The above code does not seem to result in an HTML element containing the ``` .subsubsection ``` class.
