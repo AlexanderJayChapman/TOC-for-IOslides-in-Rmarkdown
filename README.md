@@ -69,7 +69,7 @@ This file also needs to be added to the working directory.
 
 # Add sections
 
-To add a section that you want displayed in the table of content all you have te do is add a ``` .section ``` or ``` .subsection ``` class to the header of the slide.
+To add a section that you want displayed in the table of content all you have to do is add a ``` .section ``` or ``` .subsection ``` class to the header of the slide.
 
 This can be done by adding ``` {.section} ``` or ``` {.subsection} ``` after the heading.
 
