@@ -107,4 +107,4 @@ The above code does not seem to result in an HTML element containing the ``` .su
 
 # Example
 
-A working axample of the ```TOC-example.rmd``` file can be seen on [Rpubs](http://rpubs.com/ShKlinkenberg/TOC-for-IOslides-in-Rmarkdown)
+A working axample of the ```toc-example.Rmd``` file can be seen on [Rpubs](http://rpubs.com/ShKlinkenberg/TOC-for-IOslides-in-Rmarkdown)
