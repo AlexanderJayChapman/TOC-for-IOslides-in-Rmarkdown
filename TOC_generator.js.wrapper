@@ -25,6 +25,8 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         
         // Replace - in id with whitespace
         var titleText = id.replace(/-/gi, " ");
+        // Make first letter uppercase
+        titleText = titleText.charAt(0).toUpperCase() + titleText.slice(1);
         
         // Add text to list element
         item.appendChild(document.createTextNode(titleText));
