@@ -20,10 +20,10 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         var item = document.createElement('li');
 
         // Set its contents:
-        var id = idfromclass[i].id
+        var id = idfromclass[i].id;
         
         // Replace - in id with whitespace
-        var titleText = id.replace(/-/gi, " ");
+        var titleText = id;
         
         // Add text to list element
         item.appendChild(document.createTextNode(titleText));

@@ -21,10 +21,11 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         var item = document.createElement('li');
 
         // Set its contents:
-        var id = idfromclass[i].id
+        var titleText = idfromclass[i].id
         
         // Replace - in id with whitespace
         var titleText = id.replace(/-/gi, " ");
+        
         // Make first letter uppercase
         titleText = titleText.charAt(0).toUpperCase() + titleText.slice(1);
         
