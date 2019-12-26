@@ -42,6 +42,55 @@
     };
   </script>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    TableOfContents();
+  }
+  );                        
+  
+  function TableOfContents(container, output) {
+  
+  var output = output || '#toc';
+  
+  // Get all elements with class: section or subsection
+  idfromclass = document.querySelectorAll('.section, .subsection');
+  
+      // Create the list element:
+      var list = document.createElement('ul');
+  
+      // Iterate through all found elements
+      for(var i = 0; i < idfromclass.length; i++) {
+        
+          // Create the list item:
+          var item = document.createElement('li');
+  
+          // Set its contents:
+          var titleText = idfromclass[i].id;
+          
+          // Replace - in id with whitespace
+          var titleText = id.replace(/-/gi, " ");
+          
+          // Make first letter uppercase
+          titleText = titleText.charAt(0).toUpperCase() + titleText.slice(1);
+          
+          // Add text to list element
+          item.appendChild(document.createTextNode(titleText));
+          
+          // Add subsection class
+          item.className = idfromclass[i].className;
+          
+          // Add it to the list:
+          list.appendChild(item);
+      }
+  
+  // Return generated HTML to toc div in slide
+  document.querySelector(output).innerHTML = list.innerHTML;
+  
+  // Generate instruction message if no classes are defined
+  if (idfromclass.length == 0) { document.querySelector(output).innerHTML = "Add {.section} or {.subsection} to slide name to generate TOC"; }  
+  
+  };
+  </script>
   <style type="text/css">@font-face {
 font-family: 'Open Sans';
 font-style: normal;
@@ -3131,7 +3180,9 @@ slide:not(.current) .plotly.html-widget{
 
 <!-- Link to table of content javascript -->
 
-<script language="JavaScript" src="TOC_generator.js"></script>
+<!-- script language="JavaScript" src="TOC_generator.js"></script -->
+
+<!-- script language="JavaScript" src="TOC2.js"></script -->
 
 <!-- Link to table of content style 
 <link rel="stylesheet" type="text/css" href="toc-style.css">-->
@@ -3141,7 +3192,7 @@ slide:not(.current) .plotly.html-widget{
 <div id="toc">
 </div>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Add TOC</h2></hgroup><article  class="section" id="add-toc">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Add TOC</h2></hgroup><article  id="add-toc" class="section">
 
 </article></slide><slide class=""><hgroup><h2>Add TOC</h2></hgroup><article  id="add-toc-1">
 
@@ -3154,9 +3205,9 @@ slide:not(.current) .plotly.html-widget{
 <pre class = 'prettyprint lang-{"html"}'>&lt;!-- add div element table of content for javascript to fill --&gt;
 &lt;div id=&quot;toc&quot;&gt;&lt;/div&gt;</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Dependencies</h2></hgroup><article  class="section" id="dependencies">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Dependencies</h2></hgroup><article  id="dependencies" class="section">
 
-</article></slide><slide class=""><hgroup><h2>HTML</h2></hgroup><article  class="subsection" id="html">
+</article></slide><slide class=""><hgroup><h2>HTML</h2></hgroup><article  id="html" class="subsection">
 
 <p>In order to get the javascript to work, the dependencies must be added to the markdown document. This can be done with two methods. The first being HTML links to the <code>javascript</code> and <code>css</code> files like:</p>
 
@@ -3168,7 +3219,7 @@ slide:not(.current) .plotly.html-widget{
 
 <p>The problem with this method is that the parsed HTML file stays dependent on the external files and is therefore not self contained.</p>
 
-</article></slide><slide class=""><hgroup><h2>YAML</h2></hgroup><article  class="subsection" id="yaml">
+</article></slide><slide class=""><hgroup><h2>YAML</h2></hgroup><article  id="yaml" class="subsection">
 
 <p>An ugly workaround for this problem is to specify the dependencies in the YAML header of the Rmarkdown file:</p>
 
@@ -3183,7 +3234,7 @@ output:
 
 <p>In order to include a <code>.js</code> file it needs to be wrapped in <code>HTML &lt;script&gt;</code> elements. I therefore created the <code>TOC_generator.js.wrapper</code> file, but this is very ugly.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Javascript</h2></hgroup><article  class="section" id="javascript">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Javascript</h2></hgroup><article  id="javascript" class="section">
 
 </article></slide><slide class=""><hgroup><h2>Javascript</h2></hgroup><article  id="javascript-1">
 
@@ -3191,7 +3242,7 @@ output:
 
 <p>You can download <code>TOC_generator.js</code> from the <a href='https://github.com/ShKlinkenberg/TOC-for-IOslides-in-Rmarkdown' title=''>TOC-for-IOslides-in-Rmarkdown</a> GitHub page.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>CSS</h2></hgroup><article  class="section" id="css">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>CSS</h2></hgroup><article  id="css" class="section">
 
 </article></slide><slide class=""><hgroup><h2>CSS</h2></hgroup><article  id="css-1">
 
@@ -3205,7 +3256,7 @@ li.subsection {font-size: .95em;
 
 <p>This file also needs to be added to the working directory.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Add sections</h2></hgroup><article  class="section" id="add-sections">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Add sections</h2></hgroup><article  id="add-sections" class="section">
 
 </article></slide><slide class=""><hgroup><h2>Add sections</h2></hgroup><article  id="add-sections-1">
 
@@ -3217,13 +3268,13 @@ li.subsection {font-size: .95em;
 
 ## Your heading two name {.subsection}</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Limitations</h2></hgroup><article  class="section" id="limitations">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Limitations</h2></hgroup><article  id="limitations" class="section">
 
-</article></slide><slide class=""><hgroup><h2>Lowercase</h2></hgroup><article  class="subsection" id="lowercase">
+</article></slide><slide class=""><hgroup><h2>Lowercase</h2></hgroup><article  id="lowercase" class="subsection">
 
 <p>The table of content can only be displayed in lowercase. This is due to the javascipt using the ellement id for retrieving the title text of the section. This variable only contains lowercase letters.</p>
 
-</article></slide><slide class=""><hgroup><h2>No links</h2></hgroup><article  class="subsection" id="no-links">
+</article></slide><slide class=""><hgroup><h2>No links</h2></hgroup><article  id="no-links" class="subsection">
 
 <p>It would be nice if the table of content also had links to the referenced slides. Unfortunately linking to id text does not seem to work.</p>
 
@@ -3231,7 +3282,7 @@ li.subsection {font-size: .95em;
 
 <pre class = 'prettyprint lang-{"javascirt"}'>document.querySelectorAll(&#39;.section, .subsection&#39;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Two levels</h2></hgroup><article  class="subsection" id="two-levels">
+</article></slide><slide class=""><hgroup><h2>Two levels</h2></hgroup><article  id="two-levels" class="subsection">
 
 <p>Only two levels are available to use in the table of content. This seems to be caused by the Rmarkdown header 3 not allowing to define a class.</p>
 

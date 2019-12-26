@@ -21,7 +21,7 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         var item = document.createElement('li');
 
         // Set its contents:
-        var titleText = idfromclass[i].id
+        var titleText = idfromclass[i].id;
         
         // Replace - in id with whitespace
         var titleText = id.replace(/-/gi, " ");
@@ -33,7 +33,7 @@ idfromclass = document.querySelectorAll('.section, .subsection');
         item.appendChild(document.createTextNode(titleText));
         
         // Add subsection class
-        item.className = idfromclass[i].className
+        item.className = idfromclass[i].className;
         
         // Add it to the list:
         list.appendChild(item);

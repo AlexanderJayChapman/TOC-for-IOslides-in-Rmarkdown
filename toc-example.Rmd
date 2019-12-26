@@ -7,7 +7,7 @@ output:
   ioslides_presentation:
     css: toc-style.css
     includes:
-   #   in_header: TOC_generator.js.wrapper
+      in_header: TOC_generator.js.wrapper
     self_contained: true
 ---
 
@@ -18,7 +18,8 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Table of content
 
 <!-- Link to table of content javascript -->
-<script language="JavaScript" src="TOC_generator.js"></script>
+<!-- script language="JavaScript" src="TOC_generator.js"></script -->
+<!-- script language="JavaScript" src="TOC2.js"></script -->
 
 <!-- Link to table of content style 
 <link rel="stylesheet" type="text/css" href="toc-style.css">-->
